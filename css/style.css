@@ -1080,68 +1080,7 @@ button.close {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
-table {
-  max-width: 100%;
-  background-color: transparent;
-}
-th {
-  text-align: left;
-}
-.table {
-  width: 100%;
-  margin-bottom: 20px;
-}
-.table > thead > tr > th,
-.table > tbody > tr > th,
-.table > tfoot > tr > th,
-.table > thead > tr > td,
-.table > tbody > tr > td,
-.table > tfoot > tr > td {
-  padding: 8px;
-  line-height: 1.53846154;
-  vertical-align: top;
-  border-top: 1px solid #e5e4e3;
-}
-.table > thead > tr > th {
-  vertical-align: bottom;
-  border-bottom: 2px solid #e5e4e3;
-}
-.table > caption + thead > tr:first-child > th,
-.table > colgroup + thead > tr:first-child > th,
-.table > thead:first-child > tr:first-child > th,
-.table > caption + thead > tr:first-child > td,
-.table > colgroup + thead > tr:first-child > td,
-.table > thead:first-child > tr:first-child > td {
-  border-top: 0;
-}
-.table > tbody + tbody {
-  border-top: 2px solid #e5e4e3;
-}
-.table .table {
-  background-color: #ffffff;
-}
-@media (max-width: -1px) {
-  .table-responsive {
-    width: 100%;
-    margin-bottom: 15px;
-    overflow-y: hidden;
-    overflow-x: scroll;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    border: 1px solid #e5e4e3;
-    -webkit-overflow-scrolling: touch;
-  }
-  .table-responsive > .table {
-    margin-bottom: 0;
-  }
-  .table-responsive > .table > thead > tr > th,
-  .table-responsive > .table > tbody > tr > th,
-  .table-responsive > .table > tfoot > tr > th,
-  .table-responsive > .table > thead > tr > td,
-  .table-responsive > .table > tbody > tr > td,
-  .table-responsive > .table > tfoot > tr > td {
-    white-space: nowrap;
-  }
-}
+
 .tooltip {
   position: absolute;
   z-index: 1030;
@@ -8600,11 +8539,7 @@ Table of Contents
   border-top-width: 1px;
   border-top-style: solid;
 }
-.tribe-events-calendar thead th {
-  border-left: 0;
-  border-right: 0;
-  padding: 1.5em 0;
-}
+
 .datepicker.dropdown-menu {
   border-radius: 0;
   border: 0;
@@ -8616,12 +8551,7 @@ Table of Contents
 .datepicker.dropdown-menu thead tr:first-child {
   font-size: 16px;
 }
-.datepicker.dropdown-menu td,
-.datepicker.dropdown-menu th {
-  border-radius: 0;
-  border: 0;
-  padding: 9px 10px;
-}
+
 .datepicker.dropdown-menu td.active,
 .datepicker.dropdown-menu td.active:hover {
   border: 0;
@@ -8967,15 +8897,7 @@ Table of Contents
   background-color: transparent;
   border: none;
 }
-.tribe-mini-calendar td,
-.tribe-mini-calendar th {
-  border: 0;
-  padding: 0;
-  transition: none !important;
-}
-.tribe-mini-calendar td {
-  background-color: transparent;
-}
+
 .tribe-mini-calendar .tribe-mini-calendar-nav td {
   padding: 10px 10px;
   border: none;
@@ -13815,64 +13737,7 @@ body:not(:-moz-handler-blocked) .fusion-separator.sep-shadow:after {
     width: 75%;
   }
 }
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-.table {
-  border-color: #e5e4e3;
-}
-.table > thead > tr > th,
-.table > tbody > tr > th {
-  padding: 20px;
-  font-weight: bold;
-}
-.table > thead > tr > td,
-.table > tbody > tr > td,
-.table > tfoot > tr > td {
-  padding: 10px 20px;
-}
-.table > tfoot > tr > td {
-  font-weight: bold;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-.table-1 table,
-.tkt-slctr-tbl-wrap-dv table {
-  border: 1px solid#dcdcdc;
-  background-color: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-}
-.table-1 table th,
-.tkt-slctr-tbl-wrap-dv table th {
-  border: 1px solid #dcdcdc;
-  background: #f6f6f6;
-  padding: 20px;
-  text-align: left;
-}
-.table-1 tr:nth-child(even),
-.tkt-slctr-tbl-wrap-dv tr:nth-child(even) {
-  background: #f6f6f6;
-}
-.table-1 tr td,
-.tkt-slctr-tbl-wrap-dv tr td {
-  border: 1px solid #dcdcdc;
-  padding: 10px 20px;
-}
-.table-2 table thead {
-  border: 1px solid #d3d3d3;
-  text-align: left;
-}
-.table-2 table th {
-  padding: 20px;
-  color: #fff;
-}
-.table-2 tr td {
-  border-bottom: 1px solid #dcdcdc;
-  padding: 10px 20px;
-}
+
 .fusion-reading-box-container {
   z-index: 1;
   position: relative;
