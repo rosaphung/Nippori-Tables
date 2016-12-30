@@ -8,7 +8,7 @@ html {
 }
 
 table {
-    border-collapse: seperate;
+    border-collapse: separate;
     border-spacing: 100px 20px;
     background-color: black;
     }
@@ -16,10 +16,16 @@ table {
 td {
     background-color:white;
     border: 1px solid white;
+    border-radius: 5px;
     padding: 5px;
 }
 
 th {
-	background-color: #C0392B;
-	color: black;
+    background-color: #C0392B;
+    color: black;
+}
+
+.empty {
+    background-color:black;
+    border:black;
 }

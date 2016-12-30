@@ -18,13 +18,25 @@ $(document).ready(function(){
     
     $("#add").click(function(){
     	var choice = $("#tables").val();
-    	$("#"+choice).after('<td width="50" height="50" id="21">Table #100</td>')
-    	
-    })
+        
+        var row;
+        // The row we're at.
+        var addRow = Number(String(choice).charAt(1));
+        // The column we're at.
+        var addColumn = Number(String(choice).charAt(0));
+        for(row = addRow + 1; row < 10; row++) {
+            var present = $("#row" + row + ":nth-child(" + addColumn + ")");
+            var next = $("#row"+( row + 1 ) +":nth-child(" + addColumn + ")");
+            // This will fail if the row does not exist.
+            console.log((String(addColumn)+String(row)));
+            next.replaceWith(present);
+        }
+        $("#"+choice).replaceWith('<td width="50" height="50" id="' + (Number(choice) + 1) +'">Table #' + (Number(choice) + 1) +'</td>');
+    });
     
     $("#remove").click(function(){
     	var choice = $("#tables").val();
-    	$("#"+choice).remove()
-    })
+    	$("#"+choice).remove();
+    });
     
 });

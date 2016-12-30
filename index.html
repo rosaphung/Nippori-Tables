@@ -60,69 +60,82 @@
                             <div class="post-content">
                                 <h1>Tables</h1>
                                 <!-- start here -->
-								<select id="tables">
-								  <option value="11">11</option>
-								  <option value="12">12</option>
-								</select>
-								<input type="submit" value="Add" id="add">
-								<input type="submit" value="Remove" id="remove">
+                                <table>
+                                    <tr>
+                                        <th width="100" height="20" style="background-color: black;">                                    
+                                            <select id="tables">
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                            </select>
+                                            <input type="submit" value="Add" id="add">
+                                        </th>
+                                        <th width="100" height="20" style="background-color: black;">
+                                            <input type="submit" value="Remove" id="remove">
+                                        </th>
+                                        <th width="100" height="20" style="background-color: black;">
+                                            <input type="submit" value="Merge" id="merge">
+                                        </th>
+                                    </tr>
+                                </table>
                                 <table cellspacing="10">
-                                    <table style="width:700; align:center;">
-                                            <tr>
-                                              <th width="100" height="20">11-18</th>
-                                              <th width="100" height="20">21-24</th>
-                                              <th width="100" height="20">31-40</th>
-                                            </tr>
-                                            <tr>
-                                              <td width="50" height="50" id="11">Table #11</td>
-                                              <td width="50" height="50" id="21">Table #21</td>
-                                              <td width="50" height="50" id="31">Table #31</td>
-                                            </tr>
-                                            <tr>
-                                              <td width="50" height="50" id="12">Table #12</td>
-                                              <td width="50" height="50" style="background-color:black; border:black;" class="empty"></td>
-                                              <td width="50" height="50" id="32">Table #32</td>
-                                            </tr>
-                                             <tr>
-                                              <td width="50" height="50"  id="13">Table #13</td>
-                                              <td width="50" height="50"  id="22">Table #22</td>
-                                              <td width="50" height="50" id="33">Table #33</td>
-                                            </tr>
-                                             <tr>
-                                              <td width="50" height="50"  id="14">Table #14</td>
-                                              <td width="50" height="50" style="background-color:black; border:black;" class="empty"></td>
-                                              <td width="50" height="50"  id="34">Table #34</td>
-                                            </tr>
-                                             <tr>
-                                              <td width="50" height="50" id="15">Table #15</td>
-                                              <td width="50" height="50" id="23">Table #23</td>
-                                              <td width="50" height="50" id="35">Table #35</td>
-                                            </tr>
-                                             <tr>
-                                              <td width="50" height="50" id="16">Table #16</td>
-                                              <td width="50" height="50" style="background-color:black; border:black;" class="empty"></td>
-                                              <td width="50" height="50" id="36">Table #36</td>
-                                            </tr>
-                                             <tr>
-                                              <td width="50" height="50" id="17">Table #17</td>
-                                              <td width="50" height="50" id="24">Table #24</td>
-                                              <td width="50" height="50" id="37">Table #37</td>
-                                            </tr>
-                                             <tr>
-                                              <td width="50" height="50" id="18">Table #18</td>
-                                              <td width="50" height="50" style="background-color:black; border:black;" class="empty"></td>
-                                              <td width="50" height="50" id="38">Table #38</td>
-                                            </tr> <tr>
-                                              <td width="50" height="50" style="background-color:black; border:black;" class="empty"></td>
-                                              <td width="50" height="50" style="background-color:black; border:black;" class="empty"></td>
-                                              <td width="50" height="50" id="39">Table #39</td>
-                                            </tr> <tr>
-                                              <td width="50" height="50" style="background-color:black; border:black;" class="empty"></td>
-                                              <td width="50" height="50" style="background-color:black; border:black;" class="empty"></td>
-                                              <td width="50" height="50" id="40">Table #40</td>
-                                            </tr>
-                                          </table>
-                                  </table>
+                                    <table style="width:700px; text-align:center;">
+                                        <tr>
+                                          <th width="100" height="20">11-18</th>
+                                          <th width="100" height="20">21-24</th>
+                                          <th width="100" height="20">31-40</th>
+                                        </tr>
+                                        <tr id="row1">
+                                          <td width="50" height="50" id="11">Table #11</td>
+                                          <td width="50" height="50" id="21">Table #21</td>
+                                          <td width="50" height="50" id="31">Table #31</td>
+                                        </tr>
+                                        <tr id="row2">
+                                          <td width="50" height="50" id="12">Table #12</td>
+                                          <td width="50" height="50" class="empty"></td>
+                                          <td width="50" height="50" id="32">Table #32</td>
+                                        </tr>
+                                         <tr id="row3">
+                                          <td width="50" height="50"  id="13">Table #13</td>
+                                          <td width="50" height="50"  id="22">Table #22</td>
+                                          <td width="50" height="50" id="33">Table #33</td>
+                                        </tr>
+                                         <tr id="row4">
+                                          <td width="50" height="50"  id="14">Table #14</td>
+                                          <td width="50" height="50" class="empty"></td>
+                                          <td width="50" height="50"  id="34">Table #34</td>
+                                        </tr>
+                                         <tr id="row5">
+                                          <td width="50" height="50" id="15">Table #15</td>
+                                          <td width="50" height="50" id="23">Table #23</td>
+                                          <td width="50" height="50" id="35">Table #35</td>
+                                        </tr>
+                                         <tr id="row6">
+                                          <td width="50" height="50" id="16">Table #16</td>
+                                          <td width="50" height="50" class="empty"></td>
+                                          <td width="50" height="50" id="36">Table #36</td>
+                                        </tr>
+                                         <tr id="row7">
+                                          <td width="50" height="50" id="17">Table #17</td>
+                                          <td width="50" height="50" id="24">Table #24</td>
+                                          <td width="50" height="50" id="37">Table #37</td>
+                                        </tr>
+                                        <tr  id="row8">
+                                          <td width="50" height="50" id="18">Table #18</td>
+                                          <td width="50" height="50" class="empty"></td>
+                                          <td width="50" height="50" id="38">Table #38</td>
+                                        </tr> 
+                                        <tr id="row9">
+                                          <td width="50" height="50" style="" class="empty"></td>
+                                          <td width="50" height="50" class="empty"></td>
+                                          <td width="50" height="50" id="39">Table #39</td>
+                                        </tr> 
+                                        <tr id="row0">
+                                          <td width="50" height="50" class="empty"></td>
+                                          <td width="50" height="50" class="empty"></td>
+                                          <td width="50" height="50" id="40">Table #40</td>
+                                        </tr>
+                                    </table>
+                                </table>
                             </div>									
                         </div>
                     </div>
