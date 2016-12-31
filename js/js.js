@@ -4,7 +4,27 @@ $(document).ready(function(){
     bindClick();
     
     $("#add").click(function(){
-    	var choice = $("#tables").val();
+    	var choice;
+        var count=0;
+        var isSecondColumn = false;
+    	$("td").each(function(){
+    		if($(this).attr("selected") === "selected") {
+    			choice = $(this).attr("id");
+    			count++;
+    			console.log(count);
+    			if(choice.charAt(0) === "2"){
+    				isSecondColumn = true;
+    			}
+    		}
+    	});
+    	if(isSecondColumn){
+    		alert("Can't add in the second column");
+    		return;
+    	}
+    	if(count > 1){
+    		alert("You cannot select more than one");
+    		return;
+    	}
         
         var row;
         // The row we're at.
@@ -19,13 +39,12 @@ $(document).ready(function(){
         // Start looping after our choice
         for(row = addRow + 1; row < 11; row++) {
             var tempNext = jQuery.extend(true, {}, next);
-            console.log(tempNext);
             // Don't touch empty ones
             if(present.attr('class') !== 'empty') {
                 // Substitute next one with this one
                 var tableNumber = String(addColumn) + String(row + 1)
                 if((String(addColumn) + String(row + 1)).length === 3)
-                    tableNumber = ((Number(tableNumber.charAt(0)) + Number(tableNumber.charAt(1))) * 10) + Number(tableNumber.charAt(3));
+                    tableNumber = ((Number(tableNumber.charAt(0)) + Number(tableNumber.charAt(1))) * 10) + Number(tableNumber.charAt(2));
                 present.attr('id', tableNumber);
                 present.text("Table #" + tableNumber);
                 next.replaceWith(present);
@@ -46,22 +65,30 @@ $(document).ready(function(){
             $("#row"+(addRow + 1)).append(add);
         // Bind the click event
         bindClick();
-        // Repopulate dropbox
-        dropboxAdd();
     });
     
     $("#remove").click(function(){
-    	var choice = $("#tables").val();
+    	var choice;
+    	var isSecondColumn = false;
+    	$("td").each(function(){
+    		if($(this).attr("selected") === "selected") {
+    			choice = $(this).attr("id");
+    			if(choice.charAt(0) === "2"){
+    				isSecondColumn = true;
+    			}
+    		}
+    	});
+    	if(isSecondColumn){
+    		alert("Second column cannot be deleted");
+    		return;
+    	}
         $("#"+choice).html("");
     	$("#"+choice).attr('class', 'empty');
         $("#"+choice).removeAttr('id');
         
-        // Repopulate dropbox
-        dropboxAdd();
     });
     /* End attach events */
-    
-    dropboxAdd();
+
 });
 
 /*
@@ -73,7 +100,6 @@ function bindClick() {
     // Selecting a table
     $("td").click(function(){
        var table = $(this);
-       console.log("click");
        if(table.attr('class') !== 'empty'){
             if(table.attr('selected') !== 'selected') {
                 table.attr('style', 'border-radius: 5px; box-shadow: 2px 2px 5px rgba(0,0,0,0.5), inset 5px 5px 8px rgba(0,0,0,0.5);');
@@ -85,28 +111,4 @@ function bindClick() {
             }
        }
     });
-}
-
-/*
- * Populates the add dropbox
- */
-function dropboxAdd() {
-    var dropbox = [];
-    
-    // Clean dropbox first
-    $("#tables").html("");
-    
-    $("td").each(function(){
-        var column = String($(this).attr('id')).charAt(0);
-        if(column !== "2") {
-            if($(this).attr('id') !== undefined)
-                dropbox.push($(this).attr('id'));
-        }
-    });
-    
-        
-    var i;
-    dropbox.sort();
-    for(i = 0; i < dropbox.length; i++)
-        $("#tables").append('<option value="' + dropbox[i] + '">' + dropbox[i] + '</option>');
 }
