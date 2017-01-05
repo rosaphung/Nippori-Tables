@@ -387,7 +387,7 @@ function eventListeners() {
                 }
             });
             if(isSecondColumn){
-                alert("Second column cannot be deleted.");
+                alert("Second column cannot be merged.");
                 return;
             }
             if(choiceList.length < 2) {
