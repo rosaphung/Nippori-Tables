@@ -122,8 +122,7 @@ function displayTables() {
                     case 22:
                     case 23:
                     case 24:
-                        if(i === 1)
-                            td = '<td width="50" height="50" id="2' + id + '">Table #' + id + '</td>';
+                        td = '<td width="50" height="50" id="2' + id + '">Table #' + id + '</td>';
                 }
                 // Do not append tables that are considered merged (negative id)
                 if(id > 0)
@@ -215,7 +214,7 @@ function bindTDClick() {
 function lastTableOfColumnId(column) {
     var i;
     for(i = column.length-1; i >= 0; i--) {
-        if(column[i].id > 0)
+        if(column[i].id !== 0)
             return column[i].id;
     }
     return -1;
@@ -268,32 +267,16 @@ function eventListeners() {
             rowOfLastTableOfColumn = Number(String(rowOfLastTableOfColumn.charAt(1))) + 10;
         else
             rowOfLastTableOfColumn = Number(String(rowOfLastTableOfColumn.charAt(1)));
-
-        // Determines where to add the new table (handles adding after merged)
-        var rowToAdd = row;
-        while(tables[rowToAdd].id < 0) {
-            rowToAdd++;
-        }
         // Add new table into array
-        tables.splice(rowToAdd, 0, {id: (column * 10) + rowToAdd + 1});
+        tables.splice(row, 0, {id: Number(choice)+1});
+        
         // Shifts the id of each table after the one added.
         var i;
-        for(i = rowToAdd + 1; i <= rowOfLastTableOfColumn; i++) {
-            if(tables[i].id > 0) {
+        for(i = row + 1; i <= rowOfLastTableOfColumn; i++) {
+            if(tables[i].id !== 0)
                 tables[i].id++;
-                // Gotta change the merged numbers too
-                if(tables[i].merged) {
-                    var x;
-                    for(x = 0; x < tables[i].merged.length; x++) {
-                        tables[i].merged[x] = tables[i].merged[x] + 1;
-                        rowOfLastTableOfColumn++;
-                    }
-                }
-            }
-            else if(tables[i].id < 0) {
-                tables[i].id--;
-            }
         }
+        
         setColumn(column, tables);
     });
     
@@ -351,19 +334,8 @@ function eventListeners() {
                 // Shifts the id of each table after the one deleted.
                 var j;
                 for(j = row - 1; j < rowOfLastTableOfColumn; j++) {
-                    if(tables[j].id > 0) {
+                    if(tables[j].id !== 0)
                         tables[j].id--;
-                        // Gotta change the merged numbers too
-                        if(tables[i].merged) {
-                            var x;
-                            for(x = 0; x < tables[i].merged.length; x++) {
-                                //rowOfLastTableOfColumn++; we'll see if we need this
-                                tables[i].merged[x]--;
-                            }
-                        }
-                    }
-                    else if(tables[j].id < 0)
-                        tables[j].id++;
                 }
             }
             else { // We're unmerging
@@ -373,7 +345,6 @@ function eventListeners() {
                 // Kill the negatives
                 for(j = 0; j < tables.length; j++) {
                     if(tables[j].id < 0) {
-                        // Get the negative number without its negative sign
                         var neg = Number(String(tables[j].id).charAt(1) + String(tables[j].id).charAt(2));
                         if(neg === tables[row-1].id) {
                             tables.splice(j, 1);
@@ -386,7 +357,7 @@ function eventListeners() {
                 // Re-add the dead
                 var index = row;
                 for(j = 0; j < merged.length; j++) {
-                    tables.splice(index, 0, {id: (column * 10) + index + 1});
+                    tables.splice(index, 0, {id: merged[j]});
                     // If an element is added, the indexes after it are changed.
                     index = index + 1;
                 }
@@ -394,6 +365,7 @@ function eventListeners() {
                 delete tables[row-1].merged;
                 delete tables[row-1].rowspan;
             }
+            
             setColumn(column, tables);
         }
     });
@@ -442,15 +414,7 @@ function eventListeners() {
                 return;
             }
             
-            var tables;
-            
-            // Handles 20s and 40s
-            if(String(choiceList[0]).charAt(0) === "2")
-                tables = getColumn(1);
-            else if(String(choiceList[0]).charAt(0) === "4")
-                tables = getColumn(3);
-            else
-                tables = getColumn(String(choiceList[0]).charAt(0));   
+            var tables = getColumn(String(choiceList[0]).charAt(0));
             
             // Grow the first selected table's rowspan
             for(i = 0; i < tables.length; i++) {
@@ -465,23 +429,12 @@ function eventListeners() {
             for(i = 1; i < choiceList.length; i++) {
                 var j;
                 for(j = 0; j < tables.length; j++) {
-                    console.log(choiceList[i]);
-                    console.log(tables[j].id);
-                    if(choiceList[i] === tables[j].id) {
-                        console.log("it worked");
+                    if(choiceList[i] === tables[j].id)
                         // Set them to a negative version of the first table to declare them merged
                         tables.splice(j, 1, {id: choiceList[0]*-1});
-                    }
                 }
             }
-            
-            // Handles 20s and 40s
-            if(String(choiceList[0]).charAt(0) === "2")
-                setColumn(1, tables);
-            else if(String(choiceList[0]).charAt(0) === "4")
-                setColumn(3, tables);
-            else
-                setColumn(String(choiceList[0]).charAt(0), tables);
+            setColumn(String(choiceList[0]).charAt(0), tables);
     });
     
     $("#clear").click(function(){
